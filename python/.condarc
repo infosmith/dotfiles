@@ -1,0 +1,5 @@
+restore_free_channel: true
+channels:
+  - defaults
+  - conda-forge
+auto_activate_base: false
