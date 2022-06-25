@@ -1,0 +1,90 @@
+[alias]
+    branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(color:bold)%(refname:short) %(color:green)updated %(color:red)%(authordate:relative) %(color:green)by %(color:white)%(authorname)\" refs remotes
+    cane = commit --amend --no-edit
+    ce = commit --edit
+    co = checkout
+    cob = checkout -b
+    dt = difftool --gui
+    dtc = difftool --no-gui
+    ignored="!$EDITOR $HOME/.gitignore"
+    info = "!f() { echo $HOME $USER; }; f"
+    lg = !"git lg1"
+    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)-                    %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''                %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    mt = mergetool --gui
+    redevelop = "!f() { git checkout develop && git pull --rebase upstream develop; }; f"
+    remaster = "!f() { git checkout master && git pull --rebase upstream master; }; f"
+    sa = stash apply
+    sai = "!f() { git stash apply stash@{$1}; }; f"
+    save = stash --all
+    sb = "!f() { git stash branch $1; }; f"
+    sd = "!f() { read -p 'Drop all? [y/n]: ' d; case $d in y) git stash drop;; n) echo 'aborting';; esac; }; f"
+    sdi = "!f() { git stash drop stash@{$1}; }; f"
+    sl = stash list
+    sp = stash pop
+    spi = "!f() { git stash pop stash@{$1}; }; f"
+[cola]
+	autoloadcommittemplate = true
+	spellcheck = false
+	startupmode = list
+	tabwidth = 4
+[color "branch"]
+    remote = yellow
+[color "diff"]
+    commit = yellow bold
+    frag = magenta bold
+    func = 146 bold
+    meta = 11
+    new = green bold
+    old = red bold
+    whitespace = red reverse
+[color "diff-highlight"]
+	newHighlight = green bold 22
+	newNormal = green bold
+	oldHighlight = red bold 52
+	oldNormal = red bold
+[color "status"]
+    added = white
+    changed = red bold
+    untracked = magenta bold
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    pager = true
+    status = auto
+    ui = true
+[commit]
+    template = ~/.gitmessage
+[core]
+    attributesfile = ~/.gitattributes
+    autocrlf = input
+    editor = micro
+    excludesfile = ~/.gitignore
+    precomposeUnicode = true
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[diff]
+    guitool = meld
+    tool = icdiff
+[difftool]
+    prompt = false
+[difftool "icdiff"]
+    cmd = icdiff $LOCAL $REMOTE
+[difftool "meld"]
+    cmd = meld $LOCAL $REMOTE
+[init]
+	defaultBranch = main
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[merge]
+    guitool = meld
+[mergetool "meld"]
+    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+    trustExitCode = true
+[mergetool]
+	keepBackup = false
+[pull]
+	rebase = true
+[user]
+    email = 3581457+infosmith@users.noreply.github.com
+    name = infosmith
