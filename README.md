@@ -1,6 +1,7 @@
 # dotfiles
 
-Have .files will travel.
+These are my dotfiles. There are many like them but these are mine... 
+managed with GNU Stow and BASh scripting.
 
 ## Installation
 
